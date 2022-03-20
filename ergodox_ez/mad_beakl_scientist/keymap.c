@@ -44,14 +44,14 @@ enum custom_keycodes {
   HSV_27_255_255,
   HSV_215_255_128,
   HSV_0_255_255,
-  ST_MACRO_0,
-  ST_MACRO_1,
-  ST_MACRO_2,
+  QUIT_VIM,
+  WRITE_VIM,
+  RIGHT_ARROW,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
-    LGUI(KC_F), KC_TRANSPARENT, KC_LCBR,        KC_LPRN,        KC_LBRACKET,    KC_TRANSPARENT, KC_TRANSPARENT,                                     KC_TRANSPARENT, KC_COLN,        KC_RBRACKET,    KC_RPRN,        KC_RCBR,        KC_SCOLON,      KC_DELETE,
+    LGUI(KC_F), WRITE_VIM, KC_LCBR,        KC_LPRN,        KC_LBRACKET,    QUIT_VIM, KC_TRANSPARENT,                                     KC_TRANSPARENT, KC_COLN,        KC_RBRACKET,    KC_RPRN,        KC_RCBR,        KC_SCOLON,      KC_DELETE,
     KC_TAB,         KC_Q,           KC_Y,           KC_O,           KC_U,           KC_Z,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_W,           KC_D,           KC_N,           KC_C,           KC_B,           LCTL(KC_F9),
     LSFT_T(KC_BSPACE),KC_H,         KC_I,           KC_E,           KC_A,           KC_UNDS,                                                                        KC_G,           KC_T,           KC_R,           KC_S,           KC_P,           LSFT_T(KC_EQUAL),
     KC_LCTRL,       LT(1,KC_QUOTE), LT(1,KC_COMMA), KC_J,           KC_K,           KC_X,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_V,           KC_M,           KC_L,           KC_F,           LT(6,KC_SLASH), RCTL_T(KC_SCOLON),
@@ -72,8 +72,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [2] = LAYOUT_ergodox_pretty(
     LALT(LSFT(KC_TAB)), KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    LALT(KC_TAB),   ST_MACRO_0,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_PGUP,        KC_HOME,        KC_UP,          KC_END,         KC_TRANSPARENT, LCTL(KC_F10),
-    LCTL(KC_BSPACE),LCTL(KC_W),     ST_MACRO_1,     KC_TRANSPARENT, LCTL(KC_A),     KC_TRANSPARENT,                                                                 KC_PGDOWN,      KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_TRANSPARENT, KC_TRANSPARENT,
+    LALT(KC_TAB),   QUIT_VIM,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_PGUP,        KC_HOME,        KC_UP,          KC_END,         KC_TRANSPARENT, LCTL(KC_F10),
+    LCTL(KC_BSPACE),LCTL(KC_W),     WRITE_VIM,     KC_TRANSPARENT, LCTL(KC_A),     KC_TRANSPARENT,                                                                 KC_PGDOWN,      KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_TRANSPARENT, KC_TRANSPARENT,
     LCTL(LSFT(KC_Z)),KC_PC_UNDO,     KC_PC_CUT,      KC_PC_COPY,     KC_PC_PASTE,    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_LEFT),  KC_CAPSLOCK,    LCTL(KC_RIGHT), KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [3] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TILD,        KC_AT,          KC_PERC,        KC_EXLM,        KC_GRAVE,       KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_AMPR,        KC_7,           KC_8,           KC_9,           KC_BSLASH,      KC_PIPE,
-    LT(4,KC_BSPACE),KC_PLUS,        KC_CIRC,        KC_COLN,        KC_DLR,         KC_HASH,                                                                        KC_ASTR,        KC_4,           KC_5,           KC_6,           KC_MINUS,       ST_MACRO_2,
+    LT(4,KC_BSPACE),KC_PLUS,        KC_CIRC,        KC_COLN,        KC_DLR,         KC_HASH,                                                                        KC_ASTR,        KC_4,           KC_5,           KC_6,           KC_MINUS,       RIGHT_ARROW,
     KC_TRANSPARENT, KC_DQUO,        KC_COMMA,       KC_J,           KC_K,           KC_LABK,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_RABK,        KC_1,           KC_2,           KC_3,           KC_QUES,        KC_DOT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_0,           KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -147,19 +147,19 @@ bool suspended = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case ST_MACRO_0:
+    case QUIT_VIM:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESCAPE)  SS_LSFT(SS_TAP(X_SCOLON))  SS_TAP(X_Q)   SS_TAP(X_ENTER));
 
     }
     break;
-    case ST_MACRO_1:
+    case WRITE_VIM:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_ESCAPE)  SS_LSFT(SS_TAP(X_SCOLON))  SS_TAP(X_W)   SS_TAP(X_ENTER));
 
     }
     break;
-    case ST_MACRO_2:
+    case RIGHT_ARROW:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_MINUS)  SS_LSFT(SS_TAP(X_DOT))  SS_TAP(X_SPACE));
 

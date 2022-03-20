@@ -6,9 +6,9 @@
 #define KC_PC_PASTE LCTL(KC_V)
 
 enum custom_keycodes {
-    WRITE = SAFE_RANGE,
-    QUIT,
-    ASSIGN,
+    WRITE_VIM = SAFE_RANGE,
+    QUIT_VIM,
+    RIGHT_ARROW,
     HARPOON_FILE_1,
     HARPOON_FILE_2,
     HARPOON_FILE_3,
@@ -20,21 +20,21 @@ enum custom_keycodes {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-    case WRITE:
+    case WRITE_VIM:
         if (record->event.pressed) {
             SEND_STRING(SS_TAP(X_ESC) ":w" SS_TAP(X_ENT));
         } else {
         }
         break;
 
-    case QUIT:
+    case QUIT_VIM:
         if (record->event.pressed) {
             SEND_STRING(SS_TAP(X_ESC) ":q" SS_TAP(X_ENT));
         } else {
         }
         break;
 
-    case ASSIGN:
+    case RIGHT_ARROW:
         if (record->event.pressed) {
            SEND_STRING("->");
         }
@@ -105,7 +105,7 @@ enum layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_5x6(
-        LGUI(KC_F), KC_TRANSPARENT, KC_LCBR, KC_LPRN, KC_LBRACKET, KC_TRANSPARENT,                         KC_TRANSPARENT, KC_RBRACKET, KC_RPRN, KC_RCBR, KC_COLON, KC_DELETE,
+        LGUI(KC_F), WRITE_VIM, KC_LCBR, KC_LPRN, KC_LBRACKET, QUIT_VIM,                         KC_TRANSPARENT, KC_RBRACKET, KC_RPRN, KC_RCBR, KC_COLON, KC_DELETE,
         KC_TAB, KC_Q, KC_Y, KC_O, KC_U, KC_Z,                                                              KC_W, KC_D, KC_N, KC_C, KC_B, KC_F12,
         LSFT_T(KC_BSPC), KC_H, KC_I, KC_E, KC_A, KC_UNDS,                                                KC_G, KC_T, KC_R, KC_S, KC_P, LSFT_T(KC_EQUAL),
         KC_LCTRL, LT(1,KC_QUOTE), LT(1,KC_COMMA), KC_J, KC_K, KC_X,                                        KC_V, KC_M, KC_L, KC_F, LT(4,KC_SLASH), RCTL_T(KC_SCOLON),
@@ -128,11 +128,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [SHORTCUTS] = LAYOUT_5x6(
       LALT(LSFT(KC_TAB)), KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-      LALT(KC_TAB),   QUIT,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                  KC_TRANSPARENT, LALT(KC_D), LALT(KC_N), LALT(KC_C), KC_TRANSPARENT, KC_TRANSPARENT,
-      LCTL(KC_BSPACE),LCTL(KC_W),     WRITE,     KC_TRANSPARENT, LCTL(KC_A),     KC_TRANSPARENT,                                                                 KC_TRANSPARENT, LALT(KC_T), LALT(KC_R), LALT(KC_S), KC_TRANSPARENT, KC_TRANSPARENT,
-      LCTL(LSFT(KC_Z)),KC_PC_UNDO,     KC_PC_CUT,      KC_PC_COPY,     KC_PC_PASTE,    KC_TRANSPARENT,                                                           KC_TRANSPARENT, LALT(KC_M), LALT(KC_L), LALT(KC_F), KC_TRANSPARENT, KC_TRANSPARENT,
+      LALT(KC_TAB),   QUIT_VIM,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+      LCTL(KC_BSPACE),LCTL(KC_W),     WRITE_VIM,     KC_TRANSPARENT, LCTL(KC_A),     KC_TRANSPARENT,                                                                 KC_TRANSPARENT, HARPOON_FILE_1, HARPOON_FILE_2, HARPOON_FILE_3, HARPOON_FILE_4, HARPOON_FILE_5,
+      LCTL(LSFT(KC_Z)),KC_PC_UNDO,     KC_PC_CUT,      KC_PC_COPY,     KC_PC_PASTE,    KC_TRANSPARENT,                                                           KC_TRANSPARENT, HARPOON_ADD_FILE, HARPOON_QUICK_MENU, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                    KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                                          KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                         KC_TRANSPARENT, KC_TRANSPARENT,                                                          KC_TRANSPARENT, LALT(KC_ENTER),
+                                                                         KC_TRANSPARENT, KC_TRANSPARENT,                                                          KC_TRANSPARENT, KC_TRANSPARENT,
                                                                              KC_TRANSPARENT,KC_TRANSPARENT,                                    KC_TRANSPARENT,  KC_TRANSPARENT,
                                                                              KC_TRANSPARENT, KC_TRANSPARENT,                                   KC_TRANSPARENT, KC_TRANSPARENT
             ),
@@ -140,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [SYMBOLS] = LAYOUT_5x6(
       RESET, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
       KC_TRANSPARENT, KC_TILD,        KC_AT,          KC_PERC,        KC_EXLM,        KC_GRAVE,                                KC_AMPR,        KC_7,           KC_8,           KC_9,           KC_BSLASH,      KC_PIPE,
-      KC_TRANSPARENT,KC_PLUS,        KC_CIRC,        KC_COLN,        KC_DLR,         KC_HASH,                                  KC_ASTR,        KC_4,           KC_5,           KC_6,           KC_MINUS,       ASSIGN,
+      KC_TRANSPARENT,KC_PLUS,        KC_CIRC,        KC_COLN,        KC_DLR,         KC_HASH,                                  KC_ASTR,        KC_4,           KC_5,           KC_6,           KC_MINUS,       RIGHT_ARROW,
       KC_TRANSPARENT, KC_DQUO,        KC_COMMA,       KC_J,           KC_K,           KC_LABK,                                 KC_RABK,        KC_1,           KC_2,           KC_3,           KC_QUES,        KC_DOT,
                                       KC_TRANSPARENT, KC_TRANSPARENT,                                                                                          KC_TRANSPARENT, KC_TRANSPARENT,
                                                                        KC_TRANSPARENT, KC_TRANSPARENT,                                                    KC_TRANSPARENT, KC_0,
