@@ -2,8 +2,10 @@
 MCU = atmega32u4
 
 # Bootloader selection
-# BOOTLOADER = caterina
-BOOTLOADER = atmel-dfu
+# for taikohub dacman
+BOOTLOADER = caterina
+# for ohkeycaps dacman
+# BOOTLOADER = atmel-dfu
 
 # Build Options
 BOOTMAGIC_ENABLE = no       # Enable Bootmagic Lite
