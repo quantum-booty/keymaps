@@ -1,21 +1,21 @@
 #include QMK_KEYBOARD_H
 
-#define KC_PC_UNDO LCTL(KC_Z)
-#define KC_PC_CUT LCTL(KC_X)
-#define KC_PC_COPY LCTL(KC_C)
-#define KC_PC_PASTE LCTL(KC_V)
+#define UNDO LCTL(KC_Z)
+#define CUT LCTL(KC_X)
+#define COPY LCTL(KC_C)
+#define PASTE LCTL(KC_V)
 
 enum custom_keycodes {
     WRITE_VIM = SAFE_RANGE,
     QUIT_VIM,
     RIGHT_ARROW,
-    HARPOON_FILE_1,
-    HARPOON_FILE_2,
-    HARPOON_FILE_3,
-    HARPOON_FILE_4,
-    HARPOON_FILE_5,
-    HARPOON_ADD_FILE,
-    HARPOON_QUICK_MENU,
+    HARPOON_1,
+    HARPOON_2,
+    HARPOON_3,
+    HARPOON_4,
+    HARPOON_5,
+    HARPOON_ADD,
+    HARPOON_MENU,
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -40,43 +40,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-    case HARPOON_FILE_1:
+    case HARPOON_1:
         if (record->event.pressed) {
            SEND_STRING(" H1");
         }
         break;
 
-    case HARPOON_FILE_2:
+    case HARPOON_2:
         if (record->event.pressed) {
            SEND_STRING(" H2");
         }
         break;
 
-    case HARPOON_FILE_3:
+    case HARPOON_3:
         if (record->event.pressed) {
            SEND_STRING(" H3");
         }
         break;
 
-    case HARPOON_FILE_4:
+    case HARPOON_4:
         if (record->event.pressed) {
            SEND_STRING(" H4");
         }
         break;
 
-    case HARPOON_FILE_5:
+    case HARPOON_5:
         if (record->event.pressed) {
            SEND_STRING(" H5");
         }
         break;
 
-    case HARPOON_ADD_FILE:
+    case HARPOON_ADD:
         if (record->event.pressed) {
            SEND_STRING(" Ha");
         }
         break;
 
-    case HARPOON_QUICK_MENU:
+    case HARPOON_MENU:
         if (record->event.pressed) {
            SEND_STRING(" Hm");
         }
@@ -119,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LALT(LSFT(KC_TAB)), _______, _______, _______, _______, _______,                    _______, LGUI(LSFT(KC_F1)), LGUI(LSFT(KC_F2)), LGUI(LSFT(KC_F3)), LGUI(LSFT(KC_F4)), LGUI(LSFT(KC_F5)),
     LALT(KC_TAB), QUIT_VIM, _______, _______, _______, _______,                         LGUI(KC_W), LGUI(KC_D), LGUI(KC_UP), LGUI(KC_C), LGUI(KC_J), LGUI(LSFT(KC_F6)),
     LCTL(KC_BSPACE), LCTL(KC_W), WRITE_VIM, KC_LSHIFT, LGUI(KC_A), _______,             LGUI(KC_G), LGUI(KC_LEFT), LGUI(KC_DOWN), LGUI(KC_RIGHT), LGUI(KC_P), LGUI(LSFT(KC_F7)),
-    LCTL(LSFT(KC_Z)), KC_PC_UNDO, KC_PC_CUT, KC_PC_COPY, KC_PC_PASTE, LGUI(KC_X),       LGUI(KC_V), LGUI(KC_1), LGUI(KC_2), LGUI(KC_3), LGUI(KC_4), LGUI(KC_5),
+    LCTL(LSFT(KC_Z)), UNDO, CUT, COPY, PASTE, LGUI(KC_X),                               LGUI(KC_V), LGUI(KC_1), LGUI(KC_2), LGUI(KC_3), LGUI(KC_4), LGUI(KC_5),
                     _______, _______,                                                                                         LGUI(KC_F1), LGUI(KC_F1),
                                                  _______, _______,                              LGUI(KC_SPACE), LGUI(KC_ENTER),
                                                      _______,_______,                      _______,  _______,
@@ -129,8 +129,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [SHORTCUTS] = LAYOUT_5x6(
       _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
       _______, _______,     _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,
-      _______, _______,  _______, _______, _______, _______,                           _______, HARPOON_FILE_1, HARPOON_FILE_2, HARPOON_FILE_3, HARPOON_FILE_4, HARPOON_FILE_5,
-      _______, _______, _______, RCTL(KC_J), RCTL(KC_K), _______,                      _______, HARPOON_ADD_FILE, HARPOON_QUICK_MENU, _______, _______, _______,
+      _______, _______,  _______, _______, _______, _______,                           _______, HARPOON_1, HARPOON_2, HARPOON_3, HARPOON_4, HARPOON_5,
+      _______, _______, _______, RCTL(KC_J), RCTL(KC_K), _______,                      _______, HARPOON_ADD, HARPOON_MENU, _______, _______, _______,
                                    _______, _______,                                                    _______, _______,
                                                  _______, _______,                            _______, _______,
                                                      _______,_______,                      _______,  _______,
