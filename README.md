@@ -5,5 +5,5 @@
 ![Dactyl Manuform](./images/IMG20211225180315.jpg)
 ![Dactyl Manuform](./images/IMG20211231170025.jpg)
 ![Dactyl Manuform](./images/IMG20221007203215.jpg)
-# Preodic
+# Preonic
 ![Preonic](./images/IMG20210504144352.jpg)
