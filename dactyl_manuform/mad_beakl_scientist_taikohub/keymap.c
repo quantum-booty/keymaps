@@ -105,8 +105,8 @@ enum layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_5x6(
-        LGUI(KC_F), WRITE_VIM, KC_LCBR, KC_LPRN, KC_LBRC, KC_PERC,                QUIT_VIM, KC_RBRC, KC_RPRN, KC_RCBR, KC_COLON, KC_DELETE,
-        KC_TAB, KC_Q, KC_Y, KC_O, KC_U, KC_Z,                                          KC_W, KC_D, KC_N, KC_C, KC_B, KC_F12,
+        LGUI(KC_F), WRITE_VIM, KC_LCBR, KC_LPRN, KC_LBRC, KC_PERC,               _______, KC_RBRC, KC_RPRN, KC_RCBR, QUIT_VIM, KC_DELETE,
+        KC_TAB, KC_Q, KC_Y, KC_O, KC_U, KC_Z,                                          KC_W, KC_D, KC_N, KC_C, KC_B, KC_COLON,
         LSFT_T(KC_BSPC), KC_H, KC_I, KC_E, KC_A, KC_UNDS,                              KC_G, KC_T, KC_R, KC_S, KC_P, LSFT_T(KC_EQUAL),
         KC_LCTL, LT(2,KC_QUOTE), LT(2,KC_COMMA), KC_J, KC_K, KC_X,                    KC_V, KC_M, KC_L, KC_F, LT(4,KC_SLASH), RCTL_T(KC_SEMICOLON),
                   KC_VOLD, KC_VOLU,                                                                           KC_LEFT, KC_RIGHT,
@@ -138,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [SYMBOLS] = LAYOUT_5x6(
-      QK_BOOTLOADER, _______, _______, _______, _______, _______,                              _______, _______, _______, _______, _______, _______,
+      QK_BOOTLOADER, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
       _______, KC_TILD, KC_AT, KC_PERC, KC_EXLM, KC_GRAVE,                             KC_AMPR, KC_7, KC_8, KC_9, KC_BSLS, KC_PIPE,
       _______, KC_PLUS, KC_CIRC, KC_COLN, KC_DLR, KC_HASH,                              KC_ASTR, KC_4, KC_5, KC_6, KC_MINUS, RIGHT_ARROW,
       _______, KC_DQUO, KC_COMMA, KC_J, KC_K, KC_LABK,                                 KC_RABK, KC_1, KC_2, KC_3, KC_QUES,  KC_DOT,
@@ -148,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______, _______,                 _______, _______
     ),
     [FUNCTIONS] = LAYOUT_5x6(
-      _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______,
+      _______, _______, _______, _______, _______, _______,                          _______, _______, _______, _______, _______, _______,
       _______, KC_F12, KC_F7, KC_F8, KC_F9, _______,                                 _______, KC_HOME, KC_UP, KC_END, _______, _______,
       _______, KC_F11, KC_F4, KC_F5, KC_F6, _______,                                 _______, KC_LEFT, KC_DOWN, KC_RIGHT, _______, _______,
       _______, KC_F10, KC_F1, KC_F2, KC_F3, _______,                                 _______, LCTL(KC_LEFT), KC_CAPS_LOCK, RCTL(KC_RIGHT), _______, _______,
