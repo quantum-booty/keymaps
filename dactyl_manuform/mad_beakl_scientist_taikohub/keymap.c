@@ -42,43 +42,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case HARPOON_1:
         if (record->event.pressed) {
-           SEND_STRING(" H1");
+           SEND_STRING(",H1");
         }
         break;
 
     case HARPOON_2:
         if (record->event.pressed) {
-           SEND_STRING(" H2");
+           SEND_STRING(",H2");
         }
         break;
 
     case HARPOON_3:
         if (record->event.pressed) {
-           SEND_STRING(" H3");
+           SEND_STRING(",H3");
         }
         break;
 
     case HARPOON_4:
         if (record->event.pressed) {
-           SEND_STRING(" H4");
+           SEND_STRING(",H4");
         }
         break;
 
     case HARPOON_5:
         if (record->event.pressed) {
-           SEND_STRING(" H5");
+           SEND_STRING(",H5");
         }
         break;
 
     case HARPOON_ADD:
         if (record->event.pressed) {
-           SEND_STRING(" Ha");
+           SEND_STRING(",Ha");
         }
         break;
 
     case HARPOON_MENU:
         if (record->event.pressed) {
-           SEND_STRING(" Hm");
+           SEND_STRING(",Hm");
         }
         break;
 
