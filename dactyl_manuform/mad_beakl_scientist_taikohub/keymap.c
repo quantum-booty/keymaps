@@ -108,9 +108,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         LGUI(KC_F), WRITE_VIM, KC_LCBR, KC_LPRN, KC_LBRC, KC_PERC,               _______, KC_RBRC, KC_RPRN, KC_RCBR, QUIT_VIM, KC_DELETE,
         KC_TAB, KC_Q, KC_Y, KC_O, KC_U, KC_Z,                                          KC_W, KC_D, KC_N, KC_C, KC_B, KC_COLON,
         LSFT_T(KC_BSPC), KC_H, KC_I, KC_E, KC_A, KC_UNDS,                              KC_G, KC_T, KC_R, KC_S, KC_P, LSFT_T(KC_EQUAL),
-        KC_LCTL, LT(2,KC_QUOTE), LT(2,KC_COMMA), KC_J, KC_K, KC_X,                    KC_V, KC_M, KC_L, KC_F, LT(4,KC_SLASH), RCTL_T(KC_SEMICOLON),
+        KC_LCTL, LT(SHORTCUTS,KC_QUOTE), LT(SHORTCUTS,KC_COMMA), KC_J, KC_K, KC_X,                    KC_V, KC_M, KC_L, KC_F, LT(FUNCTIONS,KC_SLASH), RCTL_T(KC_SEMICOLON),
                   KC_VOLD, KC_VOLU,                                                                           KC_LEFT, KC_RIGHT,
-                                             LT(1,KC_ESCAPE), LT(3,KC_DOT),               KC_SPACE, LT(4,KC_ENTER),
+                                             LT(TILING_WM,KC_ESCAPE), LT(SYMBOLS,KC_DOT),               KC_SPACE, LT(FUNCTIONS,KC_ENTER),
                                                      KC_LGUI, KC_LALT,                           KC_LGUI,  _______,
                                                      _______, _______,                          _______,_______
     ),
