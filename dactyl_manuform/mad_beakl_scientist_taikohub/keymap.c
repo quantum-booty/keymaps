@@ -117,8 +117,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [TILING_WM] = LAYOUT_5x6(
     LALT(LSFT(KC_TAB)), _______, _______, _______, _______, _______,                    _______, LGUI(LSFT(KC_F1)), LGUI(LSFT(KC_F2)), LGUI(LSFT(KC_F3)), LGUI(LSFT(KC_F4)), LGUI(LSFT(KC_F5)),
-    LALT(KC_TAB), _______, _______, _______, _______, _______,                         LGUI(KC_W), LGUI(KC_D), LGUI(KC_UP), LGUI(KC_C), LGUI(KC_J), LGUI(LSFT(KC_F6)),
-    LCTL(KC_BSPC), LCTL(KC_W), _______, KC_LSFT, LCTL(KC_A), _______,             LGUI(KC_G), LGUI(KC_LEFT), LGUI(KC_DOWN), LGUI(KC_RIGHT), LGUI(KC_P), LGUI(LSFT(KC_F7)),
+    LALT(KC_TAB), QUIT_VIM, _______, _______, _______, _______,                         LGUI(KC_W), LGUI(KC_D), LGUI(KC_UP), LGUI(KC_C), LGUI(KC_J), LGUI(LSFT(KC_F6)),
+    LCTL(KC_BSPC), LCTL(KC_W), WRITE_VIM, KC_LSFT, LCTL(KC_A), _______,             LGUI(KC_G), LGUI(KC_LEFT), LGUI(KC_DOWN), LGUI(KC_RIGHT), LGUI(KC_P), LGUI(LSFT(KC_F7)),
     LCTL(LSFT(KC_Z)), UNDO, CUT, COPY, PASTE, LGUI(KC_X),                               LGUI(KC_V), LGUI(KC_1), LGUI(KC_2), LGUI(KC_3), LGUI(KC_4), LGUI(KC_5),
                     _______, _______,                                                                                         LGUI(KC_F1), LGUI(KC_F1),
                                                  _______, _______,                              LGUI(KC_SPACE), LGUI(KC_ENTER),
